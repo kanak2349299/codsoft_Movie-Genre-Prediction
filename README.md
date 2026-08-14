@@ -39,10 +39,11 @@ test_data.txt
 test_data_solution.txt
 The prepared data used in this project contains:
 
-Column           Role     Description
-📅 Year          Input    Movie year / year information 
-📝 Description   Input    Movie plot or description
-🎭 Genre         Target   Genre to be predicted
+|Column  |         |Role  |   Description|
+|---|---:|---:|
+|📅 Year          |Input   |Movie year / year information |
+|📝 Description  | Input   |Movie plot or description|
+|🎭 Genre         |Target  | Genre to be predicted|
 
 *📌 The dataset is not included in this repository because of its size. Download it from Kaggle before running the notebook.*
 
