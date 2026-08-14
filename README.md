@@ -30,9 +30,9 @@ Manual genre classification can be time-consuming for large movie databases. Thi
 - 📂 Dataset
 - Genre Classification Dataset IMDb
   
-* Source: Kaggle
-* Domain: Movies and TV Shows 🎥
-* The original dataset contains:
+ Source: Kaggle<br>
+ Domain: Movies and TV Shows 🎥<br>
+ The original dataset contains:<br>
 - description.txt
 - train_data.txt
 - test_data.txt
