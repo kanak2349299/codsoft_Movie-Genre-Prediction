@@ -1,17 +1,17 @@
 **🎬 Movie Genre Prediction using Machine Learning**
 
 # **📌 Overview**
-Movie Genre Prediction is an NLP and Machine Learning project that predicts the genre of a movie from its textual information.
-The project uses the Genre Classification Dataset IMDb from Kaggle. Year and Description are used as input features, while Genre is the target variable.
+Movie Genre Prediction is an NLP and Machine Learning project that predicts the genre of a movie from its textual information.<br>
+The project uses the Genre Classification Dataset IMDb from Kaggle. Year and Description are used as input features, while Genre is the target variable.<br>
 Three classification algorithms were trained and compared:
 - *🧠 Logistic Regression*
 - *⚡ Linear SVM*
-- *📊 Multinomial Naive Bayes*
+- *📊 Multinomial Naive Bayes*<br>
 Logistic Regression achieved the best performance on the test data and was selected as the final model.
 
 
 # **🎯 Problem Statement**
-Develop a Machine Learning model that can automatically predict a movie's genre based on its year and description.
+Develop a Machine Learning model that can automatically predict a movie's genre based on its year and description.<br>
 Manual genre classification can be time-consuming for large movie databases. This project uses NLP and Machine Learning to automate the classification process.
 
 
@@ -44,7 +44,7 @@ The prepared data used in this project contains:
 | 📅 Year | Input | Movie year / year information |
 | 📝 Description | Input | Movie plot or description |
 | 🎭 Genre | Target | Genre to be predicted |
-
+<br>
 *📌 The dataset is not included in this repository because of its size. Download it from Kaggle before running the notebook.*
 
 
@@ -84,12 +84,12 @@ The text preprocessing pipeline includes:
 Example
 - Playing → play
 - Played  → play
-- Plays   → play
+- Plays   → play<br>
 **ℹ️ Punctuation removal does not mean that numeric information is intentionally removed.**
 
 
 # **📊 Exploratory Data Analysis**
-EDA was performed to understand the dataset and genre distribution.
+EDA was performed to understand the dataset and genre distribution.<br>
 Visualizations
 
 - 📊 Genre distribution bar plot
@@ -97,38 +97,29 @@ Visualizations
 - ☁️ Comedy Word Cloud
 - ☁️ Drama Word Cloud
 - ☁️ Horror Word Cloud
-- 🔥 Confusion Matrix
+- 🔥 Confusion Matrix<br>
 *Word Clouds help visualize frequently occurring words within movie descriptions for selected genres.*
 
 
 # **🔀 Train-Test Split**
-The cleaned input and target variables are divided into training and testing sets.
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y,
-    test_size=0.2,
-    random_state=42,
-    stratify=y
-)
-🏋️ Training data → used to train the models
-🧪 Testing data → used to evaluate unseen examples
+The cleaned input and target variables are divided into training and testing sets.<br>
+x_train, x_test, y_train, y_test = train_test_split(x, y,test_size=0.2,random_state=42,stratify=y)<br>
+🏋️ Training data → used to train the models<br>
+🧪 Testing data → used to evaluate unseen examples<br>
 
 The same split is used for all three models for a fair comparison.
 
 
 # **📝 TF-IDF Feature Extraction**
-Raw text cannot be directly supplied to traditional Machine Learning models. Therefore, TF-IDF is used to convert text into numerical features.
-tfidf = TfidfVectorizer(
-    max_features=20000,
-    ngram_range=(1, 1)
-)
-
-X_train_tfidf = tfidf.fit_transform(X_train)
-X_test_tfidf = tfidf.transform(X_test)
+Raw text cannot be directly supplied to traditional Machine Learning models. Therefore, TF-IDF is used to convert text into numerical features.<br>
+tfidf = TfidfVectorizer(max_features=20000,ngram_range=(1, 1))<br>
+x_train_tfidf = tfidf.fit_transform(x_train)<br>
+x_test_tfidf = tfidf.transform(x_test)<br>
 
 # **⚠️ Data Leakage Prevention**
-The vectorizer is fitted only on training data:
-X_train_tfidf = tfidf.fit_transform(X_train)
-X_test_tfidf = tfidf.transform(X_test)
+The vectorizer is fitted only on training data:<br>
+x_train_tfidf = tfidf.fit_transform(x_train)<br>
+x_test_tfidf = tfidf.transform(x_test)<br>
 It should not be fitted on the complete dataset before splitting.
 
 # **📌 Scaling**
@@ -137,22 +128,22 @@ It should not be fitted on the complete dataset before splitting.
 
 # **🤖 Machine Learning Models**
 **🥇 Logistic Regression**
-from sklearn.linear_model import LogisticRegression
-lr_model = LogisticRegression(max_iter=1000)
-lr_model.fit(X_train_tfidf, y_train)
+from sklearn.linear_model import LogisticRegression<br>
+model = LogisticRegression(max_iter=1000)<br>
+model.fit(x_train_tfidf, y_train)<br>
 
 Logistic Regression achieved the best overall performance in the performed comparison.
 
 **⚡ Linear SVM**
-from sklearn.svm import LinearSVC
-svm_model = LinearSVC()
-svm_model.fit(X_train_tfidf, y_train)
+from sklearn.svm import LinearSVC <br>
+svm = LinearSVC()<br>
+svm.fit(x_train_tfidf, y_train)<br>
 Linear SVM is well suited to high-dimensional sparse TF-IDF features.
 
 **📊 Multinomial Naive Bayes**
-from sklearn.naive_bayes import MultinomialNB
-nb_model = MultinomialNB()
-nb_model.fit(X_train_tfidf, y_train)
+from sklearn.naive_bayes import MultinomialNB<br>
+n = MultinomialNB()<br>
+n.fit(x_train_tfidf, y_train)<br>
 Multinomial Naive Bayes provides a strong and efficient baseline for text classification.
 
 
@@ -172,10 +163,8 @@ All models use the same:
 | 🥉 3 | Multinomial Naive Bayes | 🟡 Lower than the other two |
 
 **Final Model*
-🏆 Logistic Regression was selected because it achieved the best overall performance on the dataset.
-
+🏆 Logistic Regression was selected because it achieved the best overall performance on the dataset.<br>
 The exact scores depend on the dataset version, preprocessing, TF-IDF parameters, and train-test split.
-
 
 ### 🧪 Evaluation Metrics
 
@@ -190,19 +179,19 @@ The exact scores depend on the dataset version, preprocessing, TF-IDF parameters
 For multi-class classification, macro F1-score is especially useful because it gives equal importance to individual classes.
 
 **🔥 Confusion Matrix**
-The confusion matrix shows actual genres against predicted genres and helps identify:
-✅ Correct classifications
-❌ Incorrect classifications
+The confusion matrix shows actual genres against predicted genres and helps identify:<br>
+✅ Correct classifications<br>
+❌ Incorrect classifications<br>
 🔄 Genres frequently confused with each other
 
 
 # **🎬 Final Prediction**
-After selecting Logistic Regression, a new movie description can be classified.
-movie_description = "A detective investigates a mysterious murder and discovers a dangerous criminal gang behind it."
-cleaned_movie = preprocess(movie_description)
-movie_tfidf = tfidf.transform([cleaned_movie])
-prediction = lr_model.predict(movie_tfidf)
-predicted_genre = le.inverse_transform(prediction)
+After selecting Logistic Regression, a new movie description can be classified.<br>
+movie_description = "A detective investigates a mysterious murder and discovers a dangerous criminal gang behind it."<br>
+cleaned_movie = preprocess(movie_description)<br>
+movie_tfidf = tfidf.transform([cleaned_movie])<br>
+prediction = model.predict(movie_tfidf)<br>
+predicted_genre = l.inverse_transform(prediction)<br>
 print("Predicted Genre:", predicted_genre[0])
 
 
@@ -218,7 +207,7 @@ flowchart TD
     G --> H[💾 Saved Model Files]
 ```
 
-The repository contains the trained components:
+The repository contains the trained components:<br>
  🧠 Trained Components
 | 🤖 File | 🎯 Purpose |
 |---|---|
@@ -226,15 +215,15 @@ The repository contains the trained components:
 | `tfidf.pkl` | Fitted TF-IDF vectorizer |
 | `label_encoder.pkl` | Genre Label Encoder |
 
-> 💡 These components can be loaded later without retraining.
-They can be loaded later without retraining.
-import pickle
-with open("model.pkl", "rb") as file:
-    model = pickle.load(file)
-with open("tfidf.pkl", "rb") as file:
-    tfidf = pickle.load(file)
-with open("label_encoder.pkl", "rb") as file:
-    le = pickle.load(file)
+> 💡 These components can be loaded later without retraining.<br>
+They can be loaded later without retraining.<br>
+import pickle<br>
+with open("model.pkl", "rb") as file:<br>
+    model = pickle.load(file)<br>
+with open("tfidf.pkl", "rb") as file:<br>
+    tfidf = pickle.load(file)<br>
+with open("label_encoder.pkl", "rb") as file:<br>
+    l = pickle.load(file)
 
 ## 📂 Repository Structure
 ```mermaid
@@ -280,98 +269,99 @@ mindmap
 - Multinomial Naive Bayes
 
 # 🚀 How to Run
-1️⃣ Clone the repository
-git clone <your-github-repository-link>
-2️⃣ Install dependencies
-pip install pandas numpy matplotlib seaborn nltk scikit-learn wordcloud
-3️⃣ Download the Dataset
-Download the Genre Classification Dataset IMDb from Kaggle and place the required files in the appropriate location.
-4️⃣ Open the Notebook
-Open:
-Genre_classify.ipynb
-using Google Colab or Jupyter Notebook.
-5️⃣ Run the Notebook
-Run the cells in order:
-Data Loading
-↓
-Cleaning
-↓
-Preprocessing
-↓
-EDA
-↓
-Train-Test Split
-↓
-TF-IDF
-↓
-Model Training
-↓
-Model Comparison
-↓
-Evaluation
-↓
-Final Prediction
+
+1️⃣ Clone the repository<br>
+git clone <your-github-repository-link><br>
+2️⃣ Install dependencies<br>
+pip install pandas numpy matplotlib seaborn nltk scikit-learn wordcloud<br>
+3️⃣ Download the Dataset<br>
+Download the Genre Classification Dataset IMDb from Kaggle and place the required files in the appropriate location.<br>
+4️⃣ Open the Notebook<br>
+Open:<br>
+Genre_classify.ipynb<br>
+using Google Colab or Jupyter Notebook.<br>
+5️⃣ Run the Notebook<br>
+Run the cells in order:<br>
+Data Loading<br>
+↓<br>
+Cleaning<br>
+↓<br>
+Preprocessing<br>
+↓<br>
+EDA<br>
+↓<br>
+Train-Test Split<br>
+↓<br>
+TF-IDF<br>
+↓<br>
+Model Training<br>
+↓<br>
+Model Comparison<br>
+↓<br>
+Evaluation<br>
+↓<br>
+Final Prediction<br>
 
 # ⚡ Performance Considerations
-TF-IDF can generate a large sparse matrix. To reduce memory usage and training time, the number of features can be limited:
-TfidfVectorizer(max_features=20000)
-This provides a practical balance between computational efficiency and useful text features.
+TF-IDF can generate a large sparse matrix. To reduce memory usage and training time, the number of features can be limited:<br>
+TfidfVectorizer(max_features=20000)<br>
+This provides a practical balance between computational efficiency and useful text features.<br>
 
 # 📚 Learning Outcomes
-This project demonstrates:
-✅ Data cleaning
-✅ Exploratory Data Analysis
-✅ Natural Language Processing
-✅ Text preprocessing
-✅ Stop-word removal
-✅ Porter stemming
-✅ TF-IDF feature extraction
-✅ Train-test splitting
-✅ Multi-class classification
-✅ Model comparison
-✅ Accuracy and F1 evaluation
-✅ Confusion matrix analysis
-✅ Model serialization
-✅ New-text prediction
+This project demonstrates:<br>
+✅ Data cleaning<br>
+✅ Exploratory Data Analysis<br>
+✅ Natural Language Processing<br>
+✅ Text preprocessing<br>
+✅ Stop-word removal<br>
+✅ Porter stemming<br>
+✅ TF-IDF feature extraction<br>
+✅ Train-test splitting<br>
+✅ Multi-class classification<br>
+✅ Model comparison<br>
+✅ Accuracy and F1 evaluation<br>
+✅ Confusion matrix analysis<br>
+✅ Model serialization<br>
+✅ New-text prediction<br>
 
 # **⚠️ Limitations*
 
-🎭 Some genres may contain fewer examples than others.
-📝 Prediction depends on the quality of the movie description.
-🌱 Stemming can sometimes produce less readable word forms.
-🎬 A movie may have multiple genres, while the dataset's target is treated as a classification label.
-🤖 Traditional ML models have less contextual understanding than modern Transformer models.
-🔮 Future Improvements
-🧠 Word2Vec or GloVe embeddings
-🤖 BERT / Transformer-based classification
-🎯 Hyperparameter tuning
-🧩 Ensemble learning
-🎬 Include movie title as an additional feature
-👥 Include cast and crew information
-📅 Add more movie metadata
-🌐 Build a Streamlit web application
-☁️ Deploy the model as an API
-📊 Create an interactive model comparison dashboard
++ 🎭 Some genres may contain fewer examples than others.
++ 📝 Prediction depends on the quality of the movie description.
++ 🌱 Stemming can sometimes produce less readable word forms.
++ 🎬 A movie may have multiple genres, while the dataset's target is treated as a classification label.
++ 🤖 Traditional ML models have less contextual understanding than modern Transformer models.
++ 🔮 Future Improvements
++ 🧠 Word2Vec or GloVe embeddings
++ 🤖 BERT / Transformer-based classification
++ 🎯 Hyperparameter tuning
++ 🧩 Ensemble learning
++ 🎬 Include movie title as an additional feature
++ 👥 Include cast and crew information
++ 📅 Add more movie metadata
++ 🌐 Build a Streamlit web application
++ ☁️ Deploy the model as an API
++ 📊 Create an interactive model comparison dashboard
 
 
 # **🏁 Conclusion**
-This project demonstrates how NLP and Machine Learning can be used to automatically classify movies into genres.
-The complete workflow is:
-🧹 Preprocessing → 🔀 Train-Test Split → 📝 TF-IDF → 🤖 Model Training → 📈 Evaluation → 🎬 Prediction
-Three models were compared:
-🧠 Logistic Regression
-⚡ Linear SVM
-📊 Multinomial Naive Bayes
-🏆 Logistic Regression achieved the best overall performance and was selected as the final model.
+This project demonstrates how NLP and Machine Learning can be used to automatically classify movies into genres.<br>
+The complete workflow is:<br>
+🧹 Preprocessing → 🔀 Train-Test Split → 📝 TF-IDF → 🤖 Model Training → 📈 Evaluation → 🎬 Prediction<br>
+Three models were compared:<br>
+🧠 Logistic Regression<br>
+⚡ Linear SVM<br>
+📊 Multinomial Naive Bayes<br>
+🏆 Logistic Regression achieved the best overall performance and was selected as the final model.<br>
 The trained model, TF-IDF vectorizer, and Label Encoder are saved as .pkl files so that predictions can be made later without retraining.
 
 **👩‍💻 Author**
 *Himangi Gupta*
 
 # ⭐ Support
-If you found this project useful:
-⭐ Star the repository
-🍴 Fork the repository
+If you found this project useful:<br>
+⭐ Star the repository<br>
+🍴 Fork the repository<br>
 💬 Share feedback
 
 ## 🎬 Final Pipeline
