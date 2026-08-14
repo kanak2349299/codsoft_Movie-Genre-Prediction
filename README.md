@@ -1,12 +1,12 @@
-*🎬 Movie Genre Prediction using Machine Learning*
+**🎬 Movie Genre Prediction using Machine Learning**
 
 # **📌 Overview**
 Movie Genre Prediction is an NLP and Machine Learning project that predicts the genre of a movie from its textual information.
 The project uses the Genre Classification Dataset IMDb from Kaggle. Year and Description are used as input features, while Genre is the target variable.
 Three classification algorithms were trained and compared:
-- **🧠 Logistic Regression*
-- **⚡ Linear SVM*
-- **📊 Multinomial Naive Bayes*
+- *🧠 Logistic Regression*
+- *⚡ Linear SVM*
+- *📊 Multinomial Naive Bayes*
 Logistic Regression achieved the best performance on the test data and was selected as the final model.
 
 
@@ -17,18 +17,19 @@ Manual genre classification can be time-consuming for large movie databases. Thi
 
 # **💡 Objectives**
 
-🎥 Analyze movie genre data
-🧹 Clean and preprocess textual information
-📊 Perform exploratory data analysis
-☁️ Generate genre-specific Word Clouds
-🔀 Perform train-test splitting
-📝 Convert text into numerical features using TF-IDF
-🤖 Train multiple classification models
-📈 Compare model performance
-🏆 Select the best model
-🎬 Predict the genre of a new movie description
-📂 Dataset
-Genre Classification Dataset IMDb
+- 🎥 Analyze movie genre data
+- 🧹 Clean and preprocess textual information
+- 📊 Perform exploratory data analysis
+- ☁️ Generate genre-specific Word Clouds
+- 🔀 Perform train-test splitting
+- 📝 Convert text into numerical features using TF-IDF
+- 🤖 Train multiple classification models
+- 📈 Compare model performance
+- 🏆 Select the best model
+- 🎬 Predict the genre of a new movie description
+- 📂 Dataset
+- Genre Classification Dataset IMDb
+  
 Source: Kaggle
 Domain: Movies and TV Shows 🎥
 The original dataset contains:
@@ -36,12 +37,14 @@ description.txt
 train_data.txt
 test_data.txt
 test_data_solution.txt
-
 The prepared data used in this project contains:
-Column           Role     Description
-📅 Year          Input    Movie year / year information 📝 Description   Input    Movie plot or description 🎭 Genre         Target   Genre to be predicted
 
-**📌 The dataset is not included in this repository because of its size. Download it from Kaggle before running the notebook.*
+Column           Role     Description
+📅 Year          Input    Movie year / year information 
+📝 Description   Input    Movie plot or description
+🎭 Genre         Target   Genre to be predicted
+
+*📌 The dataset is not included in this repository because of its size. Download it from Kaggle before running the notebook.*
 
 
 # **🧠 Project Workflow**
@@ -78,7 +81,7 @@ The text preprocessing pipeline includes:
 🌱 Apply Porter Stemmer
 🔗 Join the processed tokens
 
-**The same preprocess() function is used for training data and new movie descriptions.*
+*The same preprocess() function is used for training data and new movie descriptions.*
 Example
 Playing → play
 Played  → play
@@ -89,13 +92,14 @@ Plays   → play
 # **📊 Exploratory Data Analysis**
 EDA was performed to understand the dataset and genre distribution.
 Visualizations
-📊 Genre distribution bar plot
-☁️ Action Word Cloud
-☁️ Comedy Word Cloud
-☁️ Drama Word Cloud
-☁️ Horror Word Cloud
-🔥 Confusion Matrix
-**Word Clouds help visualize frequently occurring words within movie descriptions for selected genres.*
+
+- 📊 Genre distribution bar plot
+- ☁️ Action Word Cloud
+- ☁️ Comedy Word Cloud
+- ☁️ Drama Word Cloud
+- ☁️ Horror Word Cloud
+- 🔥 Confusion Matrix
+*Word Clouds help visualize frequently occurring words within movie descriptions for selected genres.*
 
 
 # **🔀 Train-Test Split**
@@ -129,7 +133,7 @@ X_test_tfidf = tfidf.transform(X_test)
 It should not be fitted on the complete dataset before splitting.
 
 # **📌 Scaling**
-**Additional scaling is not required after TF-IDF for the text classification models used in this project.*
+*Additional scaling is not required after TF-IDF for the text classification models used in this project.*
 
 
 # **🤖 Machine Learning Models**
@@ -364,7 +368,7 @@ Three models were compared:
 The trained model, TF-IDF vectorizer, and Label Encoder are saved as .pkl files so that predictions can be made later without retraining.
 
 **👩‍💻 Author**
-Himangi Gupta
+*Himangi Gupta*
 
 # ⭐ Support
 If you found this project useful:
