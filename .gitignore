@@ -1,0 +1,44 @@
+# 🐍 Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 📓 Jupyter
+.ipynb_checkpoints/
+
+# 🔐 Secrets
+.env
+.env.*
+*.env
+
+# 💻 Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# 🛠️ IDE
+.vscode/
+.idea/
+
+# 🖥️ OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 📦 Python packaging
+build/
+dist/
+*.egg-info/
+
+# 📊 Temporary files
+*.tmp
+*.temp
+*.log
+
+# 📂 IMDb dataset files
+# Uncomment these if you don't want to upload the dataset:
+# description.txt
+# train_data.txt
+# test_data.txt
+# test_data_solution.txt
