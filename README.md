@@ -1,12 +1,12 @@
-**🎬 Movie Genre Prediction using Machine Learning*
+*🎬 Movie Genre Prediction using Machine Learning*
 
 # **📌 Overview**
 Movie Genre Prediction is an NLP and Machine Learning project that predicts the genre of a movie from its textual information.
 The project uses the Genre Classification Dataset IMDb from Kaggle. Year and Description are used as input features, while Genre is the target variable.
 Three classification algorithms were trained and compared:
-**🧠 Logistic Regression*
-**⚡ Linear SVM*
-**📊 Multinomial Naive Bayes*
+- **🧠 Logistic Regression*
+- **⚡ Linear SVM*
+- **📊 Multinomial Naive Bayes*
 Logistic Regression achieved the best performance on the test data and was selected as the final model.
 
 
