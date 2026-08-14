@@ -30,15 +30,15 @@ Manual genre classification can be time-consuming for large movie databases. Thi
 - 📂 Dataset
 - Genre Classification Dataset IMDb
   
-Source: Kaggle
-Domain: Movies and TV Shows 🎥
-The original dataset contains:
-description.txt
-train_data.txt
-test_data.txt
-test_data_solution.txt
+* Source: Kaggle
+* Domain: Movies and TV Shows 🎥
+* The original dataset contains:
+- description.txt
+- train_data.txt
+- test_data.txt
+- test_data_solution.txt
+  
 The prepared data used in this project contains:
-
 | 📋 Column | 🔹 Role | 📝 Description |
 |-----------|---------|----------------|
 | 📅 Year | Input | Movie year / year information |
@@ -73,18 +73,18 @@ flowchart TD
 
 # **🧹 Data Preprocessing**
 The text preprocessing pipeline includes:
-🔡 Convert text to lowercase
-✂️ Remove punctuation
-🚫 Remove English stop words
-🔤 Tokenize text
-🌱 Apply Porter Stemmer
-🔗 Join the processed tokens
++ 🔡 Convert text to lowercase
++ ✂️ Remove punctuation
++ 🚫 Remove English stop words
++ 🔤 Tokenize text
++ 🌱 Apply Porter Stemmer
++ 🔗 Join the processed tokens
 
 *The same preprocess() function is used for training data and new movie descriptions.*
 Example
-Playing → play
-Played  → play
-Plays   → play
+- Playing → play
+- Played  → play
+- Plays   → play
 **ℹ️ Punctuation removal does not mean that numeric information is intentionally removed.**
 
 
@@ -158,16 +158,18 @@ Multinomial Naive Bayes provides a strong and efficient baseline for text classi
 
 # **🏆 Model Comparison**
 All models use the same:
-🔀 Train-test split
-📝 TF-IDF representation
-🎯 Target labels
-🧪 Test set
+- 🔀 Train-test split
+- 📝 TF-IDF representation
+- 🎯 Target labels
+- 🧪 Test set
 
-**Ranking*
-Rank   Model                         Result
-🥇 1   Logistic Regression       ⭐ Best 
-🥈 2   Linear SVM                    Very Good 
-🥉 3   Multinomial Naive Bayes       Lower than the other two
+### 🏆 Ranking
+
+| 🏅 Rank | 🤖 Model | 📊 Result |
+|:-------:|----------|-----------|
+| 🥇 1 | Logistic Regression | ⭐ Best |
+| 🥈 2 | Linear SVM | 🟢 Very Good |
+| 🥉 3 | Multinomial Naive Bayes | 🟡 Lower than the other two |
 
 **Final Model*
 🏆 Logistic Regression was selected because it achieved the best overall performance on the dataset.
@@ -175,14 +177,16 @@ Rank   Model                         Result
 The exact scores depend on the dataset version, preprocessing, TF-IDF parameters, and train-test split.
 
 
-# **📏 Evaluation Metrics**
-The models are evaluated using:
-🎯 Accuracy
-🔍 Precision
-🔄 Recall
-⭐ F1-score
-📊 Macro F1-score
-🔥 Confusion Matrix
+### 🧪 Evaluation Metrics
+
+| 📌 Metric | 📝 Purpose |
+|-----------|------------|
+| 🎯 Accuracy | Overall correctly classified predictions |
+| 🔍 Precision | Correct positive predictions out of all positive predictions |
+| 🔄 Recall | Correctly identified positive instances |
+| ⭐ F1-Score | Balance between precision and recall |
+| 📊 Macro F1-Score | Equal importance to all classes |
+| 🔥 Confusion Matrix | Shows actual vs predicted genres |
 For multi-class classification, macro F1-score is especially useful because it gives equal importance to individual classes.
 
 **🔥 Confusion Matrix**
@@ -203,29 +207,26 @@ print("Predicted Genre:", predicted_genre[0])
 
 
 # **🔄 Prediction Pipeline**
-
-📝 New Movie Description
-        ↓
-🧹 preprocess()
-        ↓
-📝 Fitted TF-IDF Vectorizer
-        ↓
-🧠 Logistic Regression
-        ↓
-🔢 Encoded Genre
-        ↓
-🏷️ Label Encoder
-        ↓
-🎭 Original Genre
-        ↓
-💾 Saved Model Files
+```mermaid
+flowchart TD
+    A[📄 New Movie Description] --> B[🧹 preprocess]
+    B --> C[📝 Fitted TF-IDF Vectorizer]
+    C --> D[🧠 Logistic Regression]
+    D --> E[🔢 Encoded Genre]
+    E --> F[🏷️ Label Encoder]
+    F --> G[🎭 Original Genre]
+    G --> H[💾 Saved Model Files]
+```
 
 The repository contains the trained components:
-File                     Purpose
-🤖 model.pkl           Trained Logistic Regression model 
-🔤 tfidf.pkl           Fitted TF-IDF vectorizer 
-🏷️ label_encoder.pkl   Genre Label Encoder
+ 🧠 Trained Components
+| 🤖 File | 🎯 Purpose |
+|---|---|
+| `model.pkl` | Trained Logistic Regression model |
+| `tfidf.pkl` | Fitted TF-IDF vectorizer |
+| `label_encoder.pkl` | Genre Label Encoder |
 
+> 💡 These components can be loaded later without retraining.
 They can be loaded later without retraining.
 import pickle
 with open("model.pkl", "rb") as file:
@@ -235,25 +236,24 @@ with open("tfidf.pkl", "rb") as file:
 with open("label_encoder.pkl", "rb") as file:
     le = pickle.load(file)
 
-# 📁 Repository Structure
-Movie-Genre-Prediction/
-│
-├── 📓 Genre_classify.ipynb
-├── 🤖 model.pkl
-├── 🔤 tfidf.pkl
-├── 🏷️ label_encoder.pkl
-│
-├── 📊 Screenshots/
-│   ├── bar_plot.png
-│   ├── confusion_matrix.png
-│   ├── action_wordcloud.png
-│   ├── comedy_wordcloud.png
-│   ├── drama_wordcloud.png
-│   └── horror_wordcloud.png
-│
-├── 📄 README.md
-└── 📜 .gitignore
-
+## 📂 Repository Structure
+```mermaid
+mindmap
+  root((🎬 Movie-Genre-Prediction))
+    📓 Genre_classify.ipynb
+    🤖 model.pkl
+    🔤 tfidf.pkl
+    🏷️ label_encoder.pkl
+    📊 Screenshots
+      📈 bar_plot.png
+      🔥 confusion_matrix.png
+      ☁️ action_wordcloud.png
+      ☁️ comedy_wordcloud.png
+      ☁️ drama_wordcloud.png
+      ☁️ horror_wordcloud.png
+    📄 README.md
+    📜 .gitignore
+```
 
 # **🛠️ Tech Stack**
 - 💻 Programming
@@ -280,7 +280,6 @@ Movie-Genre-Prediction/
 - Multinomial Naive Bayes
 
 # 🚀 How to Run
-
 1️⃣ Clone the repository
 git clone <your-github-repository-link>
 2️⃣ Install dependencies
@@ -375,38 +374,30 @@ If you found this project useful:
 🍴 Fork the repository
 💬 Share feedback
 
-# 🎬 Final Pipeline
-                 🎬 MOVIE GENRE PREDICTION
-                              │
-                              ▼
-                       📂 IMDb Dataset
-                              │
-                              ▼
-                    🧹 Data Preprocessing
-                              │
-                    ┌─────────┴─────────┐
-                    ▼                   ▼
-                 📅 Year          📝 Description
-                    └─────────┬─────────┘
-                              ▼
-                       🔀 Train/Test Split
-                              │
-                              ▼
-                         📝 TF-IDF
-                              │
-             ┌────────────────┼────────────────┐
-             ▼                ▼                ▼
-       🧠 Logistic       ⚡ Linear SVM     📊 Naive Bayes
-        Regression
-             └────────────────┼────────────────┘
-                              ▼
-                       📈 Comparison
-                              │
-                              ▼
-                    🏆 Logistic Regression
-                              │
-                              ▼
-                       🎬 New Prediction
-                              │
-                              ▼
-                         🎭 Genre
+## 🎬 Final Pipeline
+
+```mermaid
+flowchart TD
+    A["🎬 MOVIE GENRE PREDICTION"] --> B["📁 IMDb Dataset"]
+    B --> C["🧹 Data Preprocessing"]
+
+    C --> D["📅 Year"]
+    C --> E["📝 Description"]
+
+    D --> F["🔀 Train/Test Split"]
+    E --> F
+
+    F --> G["📝 TF-IDF"]
+
+    G --> H["🧠 Logistic Regression"]
+    G --> I["⚡ Linear SVM"]
+    G --> J["📊 Multinomial Naive Bayes"]
+
+    H --> K["📈 Model Comparison"]
+    I --> K
+    J --> K
+
+    K --> L["🏆 Best Model: Logistic Regression"]
+    L --> M["🎬 New Prediction"]
+    M --> N["🎭 Predicted Genre"]
+```
