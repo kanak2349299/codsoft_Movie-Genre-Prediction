@@ -39,38 +39,36 @@ test_data.txt
 test_data_solution.txt
 The prepared data used in this project contains:
 
-|Column|         |Role  |   Description|
-|---|---:|---:|
-|📅 Year|Input   |Movie year / year information |
-|📝 Description| Input   |Movie plot or description|
-|🎭 Genre|Target  | Genre to be predicted|
+| 📋 Column | 🔹 Role | 📝 Description |
+|-----------|---------|----------------|
+| 📅 Year | Input | Movie year / year information |
+| 📝 Description | Input | Movie plot or description |
+| 🎭 Genre | Target | Genre to be predicted |
 
 *📌 The dataset is not included in this repository because of its size. Download it from Kaggle before running the notebook.*
 
 
 # **🧠 Project Workflow**
-📂 Dataset
-   ↓
-🧹 Data Cleaning
-   ↓
-🔤 Text Preprocessing
-   ↓
-📊 EDA
-   ↓
-🔀 Train-Test Split
-   ↓
-📝 TF-IDF
-   ↓
-🤖 Model Training
-   ├── Logistic Regression
-   ├── Linear SVM
-   └── Multinomial Naive Bayes
-   ↓
-📈 Model Evaluation
-   ↓
-🏆 Best Model Selection
-   ↓
-🎬 New Movie Prediction
+```mermaid
+flowchart TD
+    A[📁 Dataset] --> B[🧹 Data Cleaning]
+    B --> C[🔤 Text Preprocessing]
+    C --> D[📊 EDA]
+    D --> E[🔀 Train-Test Split]
+    E --> F[📝 TF-IDF]
+    F --> G[🤖 Model Training]
+
+    G --> G1[Logistic Regression]
+    G --> G2[Linear SVM]
+    G --> G3[Multinomial Naive Bayes]
+
+    G1 --> H[📈 Model Evaluation]
+    G2 --> H
+    G3 --> H
+
+    H --> I[🏆 Best Model Selection]
+    I --> J[🔮 Model Prediction]
+```
 
 
 # **🧹 Data Preprocessing**
